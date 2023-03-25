@@ -1,0 +1,54 @@
+<h1 class="text-center font-bold text-2xl">Server-Sent Events</h1>
+<!-- <ul>
+  <li *ngFor="let event of events">{{ event.data }}</li>
+</ul> -->
+<mat-form-field>
+  <mat-label>Usuario</mat-label>
+  <mat-select [formControl]="userForm">
+    <mat-option *ngFor="let user of users" [value]="user">
+      {{ user.name }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<section
+  class="py-1 bg-blueGray-50 flex flex-col items-center justify-center w-full"
+>
+  <div class="rounded-t mb-0 px-4 py-3 border-0">
+    <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+      <h3 class="font-semibold text-base text-blueGray-700">CRUD</h3>
+    </div>
+
+    <button
+      class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+      type="button"
+      (click)="openDialog()"
+    >
+      Agregar
+    </button>
+  </div>
+  <div>
+    <mat-table
+      [dataSource]="data"
+      class="items-center bg-transparent w-full border-collapse"
+    >
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      <ng-container
+        *ngFor="let column of displayedColumns"
+        [matColumnDef]="column"
+      >
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="py-6 text-left text-xs font-medium text-blueGray-500 uppercase tracking-wider"
+        >
+          {{ column }}
+        </th>
+        <td mat-cell *matCellDef="let row">
+          {{ row[column] }}
+        </td>
+      </ng-container>
+    </mat-table>
+  </div>
+</section>

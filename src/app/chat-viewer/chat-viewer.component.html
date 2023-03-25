@@ -1,0 +1,12 @@
+<!-- ver los mensajes -->
+
+<li *ngFor="let item of messages">
+  {{ item.data }}
+</li>
+
+<!-- enviar mensages -->
+
+<form (ngSubmit)="sendMessage()">
+  <input type="text" [(ngModel)]="message" name="message" />
+  <button type="submit">Send</button>
+</form>

@@ -1,0 +1,25 @@
+<form
+  class="flex flex-col items-center justify-center w-full p-4 py-5"
+  [formGroup]="form"
+>
+  <mat-form-field>
+    <mat-label>data</mat-label>
+    <input matInput type="text" formControlName="data" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Empresa</mat-label>
+    <input matInput type="number" formControlName="empresa" />
+  </mat-form-field>
+</form>
+<div class="flex flex-row items-center justify-between w-full p-4 py-5">
+  <button
+    mat-raised-button
+    color="primary"
+    (click)="onSubmit()"
+    [disabled]="form.invalid"
+  >
+    Guardar
+  </button>
+  <button mat-raised-button color="warn" (click)="onCancel()">Cancelar</button>
+</div>
